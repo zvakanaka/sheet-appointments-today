@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 async function getSheet() {
   const id = process.env.SCRIPT_ID;
   if (!id) {
