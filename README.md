@@ -1,5 +1,5 @@
 # sheet-appointments-today
-Get times and names of appointments today from a Google Sheet formatted a certain way.
+Get times and names of appointments today from a Google Sheet (sheet must be formatted a certain way).
 
 ## Format of Sheet (with example)
 Tables can be anywhere. The layout of each little table has to line up with the example here.
