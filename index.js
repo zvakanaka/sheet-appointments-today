@@ -28,11 +28,11 @@ getSheet().then(json => {
   const todaysAppointments = json.forEach((row, rowIndex) => {
     row.forEach((cell, cellIndex, cells) => {
       if (getTimezoneDateStr(cell).startsWith(today) && cells[cellIndex + 1]?.trim()) {
-        appointments.push(
-          {
-            time: getTimezoneDateStr(cell).split('T')?.[1]?.replace(/(:00:00|:00)\s/, '')?.toLowerCase(),
-            name: cells?.[cellIndex + 1]?.trim()
-          })
+        const cleanTime = getTimezoneDateStr(cell).split('T')?.[1]?.replace(/(:00:00|:00)\s/, '')?.toLowerCase()
+        appointments.push({
+          time: cleanTime,
+          name: cells?.[cellIndex + 1]?.trim()
+        })
       }
     })
   })
