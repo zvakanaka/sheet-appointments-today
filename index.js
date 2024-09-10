@@ -1,9 +1,9 @@
 require('dotenv').config()
 
 async function getSheet() {
-  const id = process.env.SCRIPT_ID;
+  const id = process.env.DEPLOYMENT_ID;
   if (!id) {
-    throw new Error('SCRIPT_ID env var not set (expected `SHEET_ID="<id>"` in `.env` file)')
+    throw new Error('DEPLOYMENT_ID env var not set (expected `DEPLOYMENT_ID="<id>"` in `.env` file)')
   }
   const res = await fetch(`https://script.google.com/macros/s/${id}/exec`,
     {
@@ -20,7 +20,7 @@ async function getSheet() {
   return json;
 }
 
-getSheet().then(json => {
+getSheet().then(async json => {
   // console.log(json)
   const appointments = [];
   // const today = '10/24/2023'
@@ -38,6 +38,7 @@ getSheet().then(json => {
   })
   console.log(appointments.map(a => a.time + ' ' + a.name).join('\n'))
 });
+
 
 // e.g. str = "2023-10-25T00:00:00.000Z" => "10/25/2023,T12:00:00 PM
 function getTimezoneDateStr(str) {
